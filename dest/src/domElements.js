@@ -1,4 +1,9 @@
-let categoryName, inputBox, submitButton, list, form, progressNumber;
+let categoryName;
+let inputBox;
+let submitButton;
+let list;
+let form;
+let progressNumber;
 export const initializeDomElements = () => {
     categoryName = document.getElementById('category');
     progressNumber = document.getElementById('progress-number');
