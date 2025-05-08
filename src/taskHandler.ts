@@ -66,7 +66,7 @@ export const addItems=(selectedCategory: valueType,taskText: string,completed: b
     updateBtn.id='update'
     updateBtn.addEventListener('click',(event)=>{
         event.preventDefault()
-        if(inputBox) 
+        if(inputBox && !input.checked) 
         {
             inputBox.value=text.innerText
             editing=true

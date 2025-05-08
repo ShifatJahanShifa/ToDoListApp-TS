@@ -27,6 +27,15 @@ h1 {
     margin-bottom: 20px;
 }
 
+#input-box {
+    padding: 5px;
+    outline: none;
+}
+
+#submit-button {
+    padding: 5px;
+}
+
 #task-list {
     text-align: center;
 }
@@ -37,13 +46,40 @@ h1 {
 
 .list-item {
     margin-right: 5px;
+    transform: scale(1.5);
+}
+
+.list-item:checked+span{
+    text-decoration: line-through;
+}
+
+.list-item:checked ~ #update{
+    opacity: 50%;
+    background-color: #a89090c2;
+}
+
+span {
+    font-size: large;
+}
+
+P{
+    font-size: large;
+    margin-bottom: 5px;
+}
+
+label {
+    font-size: large;
 }
 
 #update {
     margin-left: 20px;
     margin-right: 20px;
+    padding: 5px;
+    outline: none;
 }
 
 #delete {
     margin-right: 20px;   
+    padding: 5px;
+    outline: none;
 }
