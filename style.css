@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: rgb(137, 184, 174);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#selection {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#progress-number {
+    text-align: center;
+}
+
+#input-area {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#task-list {
+    text-align: center;
+}
+
+.task-lists {
+    margin-bottom: 5px;
+}
+
+.list-item {
+    margin-right: 5px;
+}
+
+#update {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#delete {
+    margin-right: 20px;   
+}
