@@ -1,21 +1,18 @@
 import { inputBox, list } from "./domElements.ts"
 import { saveTasksToLocalStorage } from "./storage.ts";
 import { updateProgress } from "./ui.ts";
-// import { selectedCategory } from "./ui";
+import { categoryType } from "./listener.ts";
 
-export let editing=false, idx=0
-type valueType=string | undefined
+let editing: boolean=false, idx: number=0;
 
-export const addTask=(selectedCategory: valueType, text="",completed=false)=>{
-    let taskText=inputBox?.value
+export const addTask=(selectedCategory: categoryType,completed=false)=>{
+    let taskText: categoryType=inputBox?.value
     if(taskText==undefined) return;
     taskText=taskText.trim()
     if(taskText==='') return 
 
     if(editing) 
     {
-        // add updated task text, 
-        console.log(list?.children[idx])
         const listItem: Element | undefined=list?.children[idx]
         if(listItem)
         {
@@ -25,24 +22,30 @@ export const addTask=(selectedCategory: valueType, text="",completed=false)=>{
                 span.innerText=taskText;
                 editing = false;
             }
+            if(inputBox) 
+            {
+                inputBox.value=""
+            }   
+            saveTasksToLocalStorage(selectedCategory)
+            updateProgress()
         }
     }
     else 
     {
         addItems(selectedCategory,taskText,completed)
+        if(inputBox) 
+        {
+            inputBox.value=""
+        }   
+        saveTasksToLocalStorage(selectedCategory)
+        updateProgress()
     }
-    if(inputBox) 
-    {
-        inputBox.value=""
-    }   
-    saveTasksToLocalStorage(selectedCategory)
-    updateProgress()
 }
 
-// create an list item and add update, delete event.
-export const addItems=(selectedCategory: valueType,taskText: string,completed: boolean)=>{
+
+export const addItems=(selectedCategory: categoryType,taskText: string,completed: boolean)=>{
     const listItem=document.createElement('li')
-    listItem.className='task-lists'
+    listItem.className='task-list'
 
     const input=document.createElement('input')
     input.type='checkbox'
@@ -52,20 +55,15 @@ export const addItems=(selectedCategory: valueType,taskText: string,completed: b
         completed=input.checked
         saveTasksToLocalStorage(selectedCategory)
         updateProgress()
-        // input.checked=completed
     })
-    // console.log('',input.checked)
-
+   
     const text=document.createElement('span')
     text.innerText=taskText
 
-    const div=document.createElement('div')
-
     const updateBtn=document.createElement('button')
     updateBtn.innerText='Update'
-    updateBtn.id='update'
-    updateBtn.addEventListener('click',(event)=>{
-        event.preventDefault()
+    updateBtn.className='update'
+    updateBtn.addEventListener('click',()=>{
         if(inputBox && !input.checked) 
         {
             inputBox.value=text.innerText
@@ -79,25 +77,28 @@ export const addItems=(selectedCategory: valueType,taskText: string,completed: b
 
     const deleteBtn=document.createElement('button')
     deleteBtn.innerText='Delete'
-    deleteBtn.id='delete'
+    deleteBtn.className='delete'
     deleteBtn.addEventListener('click',()=>{
-        if(editing) editing=false
+        let idx2: number=idx;
+        if(list)
+        {
+            idx2=Array.from(list.children).indexOf(listItem)
+        }
+        if(editing &&(idx==idx2)) editing=false
         listItem.remove()
         saveTasksToLocalStorage(selectedCategory)
         updateProgress()
     })
 
-    div.append(updateBtn)
-    div.append(deleteBtn)
-    listItem.append(input)
-    listItem.append(text)
-    // listItem.append(div)
-    listItem.append(updateBtn)
-    listItem.append(deleteBtn)
+    
+    listItem.appendChild(input)
+    listItem.appendChild(text)
+    listItem.appendChild(updateBtn)
+    listItem.appendChild(deleteBtn)
+
     if(list) 
     {
-        list.append(listItem)
+        list.appendChild(listItem)
     }
-    // create li element, add update, delete event and insert
 }
 

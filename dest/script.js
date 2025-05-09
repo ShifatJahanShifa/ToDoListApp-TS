@@ -6,6 +6,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeDomElements();
     addListener();
     loadTasksFromLocalStorage(selectedCategory);
-    console.log('helllo shifa');
     updateProgress();
 });

@@ -4,8 +4,6 @@ export const updateProgress = () => {
     const totalTask = list === null || list === void 0 ? void 0 : list.children.length;
     const completedTask = list === null || list === void 0 ? void 0 : list.querySelectorAll('.list-item:checked').length;
     if (progressNumber) {
-        console.log('i got call', totalTask, completedTask);
         progressNumber.textContent = `Completed Task: ${completedTask}/${totalTask}`;
     }
-    // console.log('w',completedTask, totalTask)
 };
