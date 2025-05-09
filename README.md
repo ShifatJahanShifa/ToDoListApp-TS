@@ -6,7 +6,7 @@ This project is the conversion of the base javascript project into typescript pr
 ## Project Structure
 
 ```
-/To-Do-List-App
+/ToDoListApp-TS
   |-- /dest               # Compiled JavaScript files (output folder)
   |     |-- src/
   |          |-- domElements.js
@@ -32,9 +32,19 @@ This project is the conversion of the base javascript project into typescript pr
   |-- tsconfig.json       # TypeScript configuration file
 ```
 
-## Key Changes
 
-All the core functionalities of this project are same as base javascript project. But in this project, I have followed typescript's type rules as much as I can. 
+## Typescipt Concepts
+Typescript concepts I used in my project:
+- Type assertion
+- Optional chaining operator
+- Type guards
+- Object type
+- Union type
+- Specific type in place of generic type
+
+## Types in Modules
+
+All the core functionalities of this project are the same as base javascript project. But in this project, I have followed typescript's type rules as much as I can. 
 
 
 `domElements.ts` 
@@ -60,13 +70,13 @@ export const initializeDomElements=(): void =>{
 
 `listener.ts` 
 
-In this file, I have defined a type for variable that will hold the categoryName.  
+In this file, I have defined a type for a variable that will hold the categoryName.  
 
 ```ts
 export type categoryType=string | undefined
 ```  
 
-Also, I have used optional chaining operator to handle the case if the value is null. For example: 
+Also, I have used optional chaining operator to handle the case if the value can be null. For example: 
 
 ```ts
 submitButton?.addEventListener('click', (event): void => 
@@ -78,7 +88,7 @@ submitButton?.addEventListener('click', (event): void =>
 
 `storage.ts` 
 
-In this file, I have defined a type for stored data. 
+In this file, I have defined a type for the stored data. 
 
 ```ts
 type storage={
@@ -87,7 +97,7 @@ type storage={
 }
 ``` 
 
-Also, I have specified the type in the `querySelector` function. For example: 
+Also, I have specified the type in place of generic type when invoking the `querySelector` function. For example: 
 
 ```ts
  let spanElem: HTMLSpanElement | null=lists[i].querySelector<HTMLSpanElement>('span')
@@ -95,7 +105,7 @@ Also, I have specified the type in the `querySelector` function. For example:
 
 `taskhandler.ts` 
 
-In this file, I applied **optional chaining** operator where necessary.
+In this file, I've applied **optional chaining** operator where necessary.
 ```ts
  let taskText: categoryType=inputBox?.value
 ```
@@ -107,13 +117,22 @@ Also in this file, I have used optional chaining operator and specified HTML ele
  const completedTask: number | undefined=list?.querySelectorAll<HTMLInputElement>('.list-item:checked').length
 ```
 
+I have used type guard in this file. For example:
+```ts
+if(progressNumber)   // narrowing down the type. progressNumber can be an HTML element or null
+{
+    progressNumber.textContent=`Completed Task: ${completedTask}/${totalTask}`
+}
+```
+
 
 ## Technology
 
 ```
-HTML, CSS, Javascript
+HTML: For structuring the website
+CSS: For styling the website
+Javascript: For adding logic the website
 ```
-
 
 
 ## Installation
