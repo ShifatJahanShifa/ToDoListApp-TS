@@ -27,6 +27,7 @@ export const addTask=(selectedCategory: categoryType,completed=false)=>{
                 inputBox.value=""
             }   
             saveTasksToLocalStorage(selectedCategory)
+            updateProgress()
         }
     }
     else 
