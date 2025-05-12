@@ -1,7 +1,7 @@
 let categoryName, inputBox, submitButton, list, form, progressNumber
 
 export const initializeDomElements=()=>{
-    categoryName=document.getElementById('category') as HTMLSelectElement | null
+    categoryName=document.getElementById('category')
     progressNumber=document.getElementById('progress-number')
     form=document.getElementById('form')
     inputBox=document.getElementById('input-box')

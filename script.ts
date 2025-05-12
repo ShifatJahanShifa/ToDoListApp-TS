@@ -1,13 +1,13 @@
-import { initializeDomElements } from "./src/domElements.ts"
-import { addListener } from "./src/listener.ts";
-import { loadTasksFromLocalStorage } from "./src/storage.ts";
-import { selectedCategory, updateProgress } from "./src/ui.ts";
+// import { initializeDomElements } from "./JavaScripts/domElements.js";
+// import { addListener } from "./JavaScripts/listener.js";
+// import { loadTasksFromLocalStorage } from "./JavaScripts/storage.js";
+// import { selectedCategory, updateProgress } from "./JavaScripts/ui.js";
 
 
-document.addEventListener('DOMContentLoaded',(): void =>{
-    initializeDomElements()
-    addListener()
-    loadTasksFromLocalStorage(selectedCategory) 
-    console.log('helllo shifa');
-    updateProgress()
+document.addEventListener('DOMContentLoaded',()=>{
+    // initializeDomElements()
+    // updateProgress()
+    // addListener()
+    // loadTasksFromLocalStorage(selectedCategory) 
+    alert('hello world')
 })
