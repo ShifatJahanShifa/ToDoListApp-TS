@@ -1,4 +1,5 @@
 import { list, progressNumber } from "./domElements.ts"
+import { saveTasksToLocalStorage } from "./storage.ts"
 
 export let selectedCategory: string='📚 Study'
 
@@ -8,7 +9,10 @@ export const updateProgress=(): void=>{
    
     if(progressNumber)
     {
+        console.log('i got call',totalTask, completedTask);
+        
         progressNumber.textContent=`Completed Task: ${completedTask}/${totalTask}`
     }
+    // console.log('w',completedTask, totalTask)
 }
 

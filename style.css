@@ -36,11 +36,11 @@ h1 {
     padding: 5px;
 }
 
-#task-lists {
+#task-list {
     text-align: center;
 }
 
-.task-list {
+.task-lists {
     margin-bottom: 5px;
 }
 
@@ -53,9 +53,9 @@ h1 {
     text-decoration: line-through;
 }
 
-.list-item:checked ~ .update{
-    opacity: 30%;
-    /* background-color: #a89090c2; */
+.list-item:checked ~ #update{
+    opacity: 50%;
+    background-color: #a89090c2;
 }
 
 span {
@@ -71,19 +71,15 @@ label {
     font-size: large;
 }
 
-.update {
+#update {
     margin-left: 20px;
     margin-right: 20px;
     padding: 5px;
-    border: 2px solid;
-    border-radius: 10px;
-    background-color: rgb(85, 214, 122);
+    outline: none;
 }
 
-.delete {
+#delete {
     margin-right: 20px;   
     padding: 5px;
-    border: 2px solid;
-    border-radius: 10px;
-    background-color: rgb(213, 104, 104);
+    outline: none;
 }

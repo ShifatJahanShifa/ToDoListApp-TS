@@ -8,5 +8,6 @@ document.addEventListener('DOMContentLoaded',(): void =>{
     initializeDomElements()
     addListener()
     loadTasksFromLocalStorage(selectedCategory) 
+    console.log('helllo shifa');
     updateProgress()
 })
